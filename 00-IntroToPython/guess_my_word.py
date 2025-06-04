@@ -13,9 +13,9 @@ def update_display_word(dw,sw,g):
 def main():
     print("Guess My Word")
 
-    word_options = ["pencil","mouse", "human", "computer", "catapult," "winston"]
+    word_options = ["pencil","mouse", "human", "computer", "catapult" "winston"]
     secret_word = random.choice(word_options)
-    print(secret_word)
+    #print(secret_word)
 
     word_length = len(secret_word)
     display_word = "*" * word_length
@@ -38,3 +38,4 @@ def main():
             break
 
 main()
+
