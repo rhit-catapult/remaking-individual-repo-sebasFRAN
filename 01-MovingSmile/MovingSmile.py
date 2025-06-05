@@ -69,7 +69,7 @@ def main():
         # TODO 2: Draw a mouth
         # Suggestion: color (0,0,0), x 230, y 320, width 180, height 30
         # API --> pygame.draw.rect(screen, (r,g,b), (x, y, width, height), thickness)
-        pygame.draw.rect(screen,(0,0,0), (230,320,180,30), 100)
+        pygame.draw.rect(screen,(0,0,0), (230,320,180,10), 100)
 
         pygame.display.update()
 
