@@ -8,15 +8,42 @@ import random
 # TODO: Create a Ball class.
 # TODO: Possible member variables: screen, color, x, y, radius, speed_x, speed_y
 # TODO: Methods: __init__, draw, move
+class Ball:
+    def __init__(self, screen: pygame.Surface):
+        self.screen = screen
+        self.radius = random.randint(5, 50)
+        self.x = random.randint(self.radius, self.screen.get_width()-self.radius)
+        self.y = random.randint(self.radius, self.screen.get_height()-self.radius)
+        self.speed_x = random.randint(1, 10)
+        self.speed_y = random.randint(1, 10)
+        self.color = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
+
+    def move(self):
+        self.y += self.speed_y
+        self.x += self.speed_x
+        if self.y - self.radius < 0:
+            self.speed_y *= -1
+        if self.y + self.radius > self.screen.get_height():
+            self.speed_y *= -1
+        if self.x - self.radius < 0:
+            self.speed_x *= -1
+        if self.x + self.radius > self.screen.get_width():
+            self.speed_x *= -1
+    def draw(self):
+        pygame.draw.circle(self.screen, (self.color), (self.x, self.y), self.radius)
+
 
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((300, 300))
+    screen = pygame.display.set_mode((1000, 800))
     pygame.display.set_caption('Bouncing Ball')
     screen.fill(pygame.Color('gray'))
     clock = pygame.time.Clock()
-
+    balls = [] #More balls
+    for k in range(100):
+        balls.append(Ball(screen))
+    #ball1 = Ball(screen)
     # TODO: Create an instance of the Ball class called ball1
 
     while True:
@@ -29,6 +56,11 @@ def main():
 
         # TODO: Move the ball
         # TODO: Draw the ball
+        #ball1.draw()
+        #ball1.move()
+        for ball in balls:
+            ball.move()
+            ball.draw()
 
         pygame.display.update()
 
